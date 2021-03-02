@@ -32,14 +32,14 @@ cd instaliveweb/
 #### > Installing and activating the virtual environment
 
 ```sh
-python -m venv env
+python3 -m venv env
 env\Scripts\activate.bat
 ```
 
 #### > Installing Packages
 
 ```sh
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 ## Running on Local
