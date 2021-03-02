@@ -12,7 +12,7 @@
                   <i class="mdi mdi-wifi text-success"></i>
                 </h2>
                 <h3 class="" id="live_status">{{data_stream['status']}}</h3>
-                <h6 class="card-subtitle">Status Broadcast</h6>
+                <h6 class="card-subtitle">Status da Transmissão</h6>
               </div>
             </div>
           </div>
@@ -36,7 +36,7 @@
       </div>
       <div class="card">
         <div class="card-header card-header-action">
-          <span>Live Comments</span>
+          <span>Mensagens ao vivo</span>
           <div class="mute-comments" data-muted={{is_muted|lower}}>
             {% if is_muted %}
             <button type="button" class="btn btn-warning toggleMute" data-toggle="tooltip" data-placement="top" title="Unmute Comments">
@@ -56,14 +56,14 @@
         <div class="card-body">
           <ul class="chat-list ">
             <li>
-              No recent comments
+              Sem comentários.
             </li>
           </ul>
       </div>
       <div class="card-body b-t">
         <div class="row">
             <div class="col-8">
-                <textarea id="text_message" placeholder="Type your message here" class="form-control b-0"></textarea>
+                <textarea id="text_message" placeholder="Sua menssagem aqui" class="form-control b-0"></textarea>
             </div>
             <div class="col-4 text-right">
                 <button type="button" id ="sendMessage" class="btn btn-info btn-circle btn-lg"><i class="mdi mdi-send"></i> </button>
@@ -76,11 +76,11 @@
     <div class="col-lg-8 col-xlg-9">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">RTMP Server Information</h4>
+          <h4 class="card-title">Informações de Sistema</h4>
           <h6 class="card-subtitle">Live Streaming Server</h6>
           <form class="form p-t-20">
             <div class="form-group">
-              <label for="broadcastId">Broadcast ID</label>
+              <label for="broadcastId">Instagram ID</label>
               <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon1">
@@ -96,7 +96,7 @@
               </div>
             </div>
             <div class="form-group">
-              <label for="streamUrl">Stream URL</label>
+              <label for="streamUrl">URL para Transmissão</label>
               <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon1">
@@ -112,7 +112,7 @@
               </div>
             </div>
             <div class="form-group">
-              <label for="streamKey">Stream Key</label>
+              <label for="streamKey">Chave Stream</label>
               <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon1">
@@ -127,23 +127,23 @@
                 />
               </div>
               <small
-                >Stream key is not persistent and can only be used once.
-                You must to restart server if you want to live
-                again.</small
+                >A chave de fluxo não é persistente e só pode ser usada uma vez.
+                Você deve reiniciar o servidor se quiser viver
+                de novo.</small
               >
             </div>
             <button type="button" class="btn btn-primary mt-2 mt-md-0 startBroadcast" {% if data_stream['status'] == 'active' %} disabled {% endif %}>
-              <i class="mdi mdi-play"></i> Start Broadcast
+              <i class="mdi mdi-play"></i> Iniciar transmissão
             </button>
             <button type="button" class="btn btn-danger mt-2 mt-md-0" id="stopBroadcast"
             {% if data_stream['status'] != 'active' %}
               disabled
             {% endif %}>
-              <i class="mdi mdi-stop"></i> Stop Broadcast
+              <i class="mdi mdi-stop"></i> Parar a transmissão
             </button>
             <a href="/dashboard/refresh_key" type="submit"
             class="btn btn-outline-danger mt-2 mt-md-0 {% if data_stream['status'] == 'active' %} disabled {% endif %}" 
-              id="refreshKey"  ><i class="mdi mdi-restart"></i> Restart Server</a>
+              id="refreshKey"  ><i class="mdi mdi-restart"></i> Reiniciar servidor</a>
         </div>
       </div>
     </div>
@@ -157,47 +157,47 @@
         </div>
         <div class="card-body">
           <div class="article-container">
-            <h2 class="card-title text-center">Getting started with InstaLiveWeb on OBS</h2>
+            <h2 class="card-title text-center">Introdução ao n.insta no OBS</h2>
             <h5 class="card-text">
-              1. On OBS, click settings on the right down of your windows.
+              1. No OBS, clique em configurações à direita de suas janelas.
             </h5>
             <img class="img-thumbnail mx-auto d-block" src="{{ url_for('static', filename='img/step1.png') }}" alt="">
 
             <h5 class="card-text mt-1">
-              2. On Stream tab, click on service dropdown and select Custom... options
+              2. Na guia Stream, clique no menu suspenso de serviço e selecione Custom ... options
             </h5>
             <img class="img-thumbnail mx-auto d-block" src="{{ url_for('static', filename='img/step2.png') }}" alt="">
 
             <h5 class="card-text mt-1">
-              3. Insert <code>{{data_stream.stream_server}}</code> to server field
+              3. Inserir <code>{{data_stream.stream_server}}</code> para o campo do servidor
             </h5>
             <h5 class="card-text mt-1">
-              4. Insert your stream key <input type="text" class="form-control mt-2" value="{{data_stream.stream_key}}">
+              4. Insira sua chave de stream <input type="text" class="form-control mt-2" value="{{data_stream.stream_key}}">
             </h5>
             <img class="img-thumbnail mx-auto d-block" src="{{ url_for('static', filename='img/step3.png') }}" alt="">
 
             <h5 class="card-text mt-1">
-              5. <code>(OPTIONAL) </code> Set base resolution to <code>720x1080</code> to match the aspect ratio from the Instagram
+              5. <code>(OPCIONAL) </code> Defina a resolução de base para <code>720x1280</code> para combinar com a proporção do Instagram
             </h5>
             <img class="img-thumbnail mx-auto d-block" src="{{ url_for('static', filename='img/step3_opt.png') }}" alt="">
 
             <h5 class="card-text mt-1">
-              6. Don't forget to hit <code>apply</code> and <code>close</code> the settings window
+              6. Não se esqueça de bater <code>Aplique</code> e <code>fechar</code> a janela de configurações
             </h5>
 
             <h5 class="card-text mt-1">
-              7. To starting the stream, you must click on <code>Start Streaming</code> on your obs first.
+              7. Para iniciar o stream, você deve clicar em <code>Iniciar streaming</code> em seu obs primeiro.
             </h5>
 
             <img class="img-thumbnail mx-auto d-block" src="{{ url_for('static', filename='img/step4.png') }}" alt="">
 
             <h5 class="card-text mt-1">
-              8. After that, you can click <code>Start Broadcast</code> button in the <code>RTMP Server Information
-              </code> section on top or alternatively click on button below
+              8. Depois disso, você pode clicar <code>Iniciar transmissão</code> botão no <code>Informações do servidor RTMP
+              </code> seção no topo ou, alternativamente, clique no botão abaixo
             </h5>
             <div class="text-center">
               <button type="button" class="btn btn-primary mt-2 mt-md-0 startBroadcast" {% if data_stream['status'] == 'active' %} disabled {% endif %}>
-                <i class="mdi mdi-play"></i> Start Broadcast
+                <i class="mdi mdi-play"></i> Iniciar transmissão
               </button>
             </div>
             
